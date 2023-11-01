@@ -3,6 +3,7 @@ import { Student } from '../model/student';
 import { HomeworkService } from './homework.service';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
+import { User } from '../model/user';
 
 @Injectable({
   providedIn: 'root'
@@ -31,7 +32,15 @@ export class StudentService {
     return this.http.post<Student>("http://localhost:8090/student/add", student);
   }
 
-  login(correo:String):Observable<Student>{
-    return this.http.get<Student>("http://localhost:8090/student/login?correo=" + correo);
+  login(user:User):Observable<String>{
+    return this.http.post("http://localhost:8090/student/login",user,
+      {
+        responseType: 'text'
+      }
+    );
+  }
+
+  studentHome():Observable<Student>{
+    return this.http.get<Student>("http://localhost:8090/student/details");
   }
 }

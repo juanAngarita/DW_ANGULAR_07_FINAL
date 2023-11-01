@@ -10,11 +10,12 @@ import { FormsModule } from '@angular/forms';
 import { EmoticonPipe } from './pipes/emoticon.pipe';
 import { AdminPageComponent } from './admin/admin-page/admin-page.component';
 import { ErrorPageComponent } from './error/error-page/error-page.component';
-import { HttpClientModule } from '@angular/common/http';
+import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { LoginComponent } from './auth/login/login.component';
 import { SignupComponent } from './auth/signup/signup.component';
 import { LoginTeachersComponent } from './auth/login-teachers/login-teachers.component';
 import { SignupTeacherComponent } from './auth/signup-teacher/signup-teacher.component';
+import { AuthInterceptor } from './helpers/auth.interceptor';
 
 
 @NgModule({
@@ -37,7 +38,11 @@ import { SignupTeacherComponent } from './auth/signup-teacher/signup-teacher.com
     FormsModule,
     HttpClientModule
   ],
-  providers: [],
+  providers: [
+    {
+      provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true
+    }
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

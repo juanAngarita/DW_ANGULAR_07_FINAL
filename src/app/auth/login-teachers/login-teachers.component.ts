@@ -26,6 +26,10 @@ export class LoginTeachersComponent {
     this.teacherService.login(this.formUser).subscribe(
       (data) => {
         this.router.navigate(['/home']);
+      },
+      (error) => {
+        console.log(error.error);
+        console.log(error.status);
       }
     )
   }

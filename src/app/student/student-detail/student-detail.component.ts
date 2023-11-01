@@ -25,6 +25,7 @@ export class StudentDetailComponent {
 
   //Se llama una única vez cuando el componente se renderiza en pantalla
   ngOnInit(): void {
+    /*
     console.log("ngOnInit de detail");
     //LLamar un API
     this.route.paramMap.subscribe(params => {
@@ -41,6 +42,12 @@ export class StudentDetailComponent {
           }
         )
     })
+    */
+    this.studentService.studentHome().subscribe(
+      (data) => {
+        this.student = data
+      }
+    )
   }
 
   //Dado que el componente tiene una propiedad input se llama despues del constructor

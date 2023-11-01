@@ -14,6 +14,7 @@ const routes: Routes = [
   { path: 'admin', component: AdminPageComponent },
   { path: 'student', component: StudentDetailComponent },
   { path: 'student/detail/:id', component: StudentDetailComponent },
+  { path: 'student/home', component: StudentDetailComponent },
   { path: 'auth/login/estudiante', component: LoginComponent },
   { path: 'auth/login/profesor', component: LoginTeachersComponent },
   { path: 'auth/signup/estudiante', component: SignupComponent },
